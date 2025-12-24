@@ -1,0 +1,5 @@
+{
+  "name": "Zss",
+  "description": "用參與者名單、進行動畫抽獎，以及自動偵測重複名單並進行 CSV 支援的團隊分組",
+  "requestFramePermissions": []
+}
