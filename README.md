@@ -1,20 +1,38 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# ZSS - React Project
 
-# Run and deploy your AI Studio app
+This is a React application built with Vite.
 
-This contains everything you need to run your app locally.
+## Check Package.json
+Verify that your `package.json` contains the necessary scripts and dependencies.
+- `dev`: Starts the development server.
+- `build`: Builds the application for production.
+- `preview`: Previews the built application.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1XDsOzRYoVZafz1MI-RJkUJbbv727tbbY
+## Installation
 
-## Run Locally
+1. Clone the repository.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-**Prerequisites:**  Node.js
+## Development
 
+Start the development server:
+```bash
+npm run dev
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Build
+
+Build the application for production:
+```bash
+npm run build
+```
+
+## Deployment
+
+This project is configured with GitHub Actions for automated deployment.
+On every push to the `main` branch, the `Build and Deploy` workflow will run.
+Ensure you have set up the necessary secrets if deploying to a specific hosting service.
+The current configuration assumes deployment to GitHub Pages via the `peaceiris/actions-gh-pages` action.

@@ -13,11 +13,20 @@ const NameManager: React.FC<NameManagerProps> = ({ initialNames, onUpdate }) => 
     setInputText(initialNames.join('\n'));
   }, [initialNames]);
 
+  const timeoutRef = React.useRef<number | null>(null);
+
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
     setInputText(text);
-    const names = text.split(/[\n,]+/).map(n => n.trim()).filter(n => n !== '');
-    onUpdate(names);
+
+    if (timeoutRef.current) {
+      window.clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = window.setTimeout(() => {
+      const names = text.split(/[\n,]+/).map(n => n.trim()).filter(n => n !== '');
+      onUpdate(names);
+    }, 500);
   };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,11 +70,11 @@ const NameManager: React.FC<NameManagerProps> = ({ initialNames, onUpdate }) => 
               </p>
               <p className="text-xs text-slate-400">僅支援 CSV 或 純文字檔案</p>
             </div>
-            <input 
-              type="file" 
-              className="hidden" 
+            <input
+              type="file"
+              className="hidden"
               accept=".csv,.txt"
-              onChange={handleFileUpload} 
+              onChange={handleFileUpload}
             />
           </label>
         </div>
